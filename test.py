@@ -8,6 +8,9 @@ class HelloWorld(cmd.Cmd):
     
     def do_EOF(self, line):
         return True
+    
+    def do_quit(self, line):
+        return True
 
     def help_EOF(self):
         print("exiting the cmd loop")
