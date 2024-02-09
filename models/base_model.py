@@ -39,7 +39,8 @@ class BaseModel():
 
     def save(self):
         ''' save method will be updated later '''
-        self.updated_at = datetime.now().isoformat()
+        # self.updated_at = datetime.now().isoformat()
+        self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):

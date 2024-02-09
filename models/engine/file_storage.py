@@ -1,6 +1,8 @@
 '''file storage, serialize python class objects to json'''
 
 import json
+# from models.base_model import BaseModel
+# from models.user import User
 
 
 class FileStorage():
@@ -16,12 +18,15 @@ class FileStorage():
     def new(self, obj):
         '''sets in __objects the obj with key <obj class name>.id'''
         class_name = type(obj).__name__.split('.')[-1]
-        self.__objects[f'{class_name}.{obj.id}'] = obj.to_dict()
+        self.__objects[f'{class_name}.{obj.id}'] = obj
 
     def save(self):
         '''serializes __objects to the JSON file (path: __file_path)'''
+        dict_repr = {}
+        for k,v in self.__objects.items():
+            dict_repr[k] = v.to_dict()
         with open(self.__file_path, 'w', encoding='utf8') as db:
-            json.dump(self.__objects, db, indent=4)
+            json.dump(dict_repr, db, indent=4)
 
     def reload(self):
         '''
@@ -30,8 +35,17 @@ class FileStorage():
             otherwise, do nothing. If the file doesnot exist
         '''
         try:
+            from models.base_model import BaseModel
+            from models.user import User
+
             with open(self.__file_path, 'r', encoding='utf8') as db:
-                self.__objects = json.load(db)
+                dict_repr = json.load(db)
+            for k in dict_repr.keys():
+                class_name = k.split('.')[0]
+                if class_name == 'BaseModel':
+                    self.__objects[k] = BaseModel(**dict_repr[k])
+                elif class_name == 'User':
+                    self.__objects[k] = User(**dict_repr[k])
 
         except FileNotFoundError:
             pass

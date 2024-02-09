@@ -15,3 +15,6 @@ with open('db.json', 'r', encoding = 'utf8') as f:
 print(al)
 print(type(al))
 print(al.keys())
+for k in al.keys():
+    print(type(k))
+    print(k)
