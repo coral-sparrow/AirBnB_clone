@@ -2,9 +2,10 @@
     this is the BaseModel test module
 '''
 
-import unittest 
+import unittest
 from models.base_model import BaseModel
 from datetime import datetime
+
 
 class Test_BaseModel(unittest.TestCase):
     ''' unittesting for the base model class '''
@@ -27,11 +28,9 @@ class Test_BaseModel(unittest.TestCase):
         bm = BaseModel()
 
         # is all attributes is out?
-        self.assertTrue(set(bm.to_dict().keys()).issubset(set(['id', '__class__', 'updated_at', 'created_at', ])))
-        # created_at is converted to str?
-        # self.assertIsInstance(bm.to_dict()['created_at'], str, msg = "created at is not str in to_dict() output")
-        # # updated_at is converted to str?
-        # self.assertIsInstance(bm.to_dict()['update_at'], str, msg = "updated_at at is not str in to_dict() output")
+        a = set(bm.to_dict().keys())
+        b = set(['id', '__class__', 'updated_at', 'created_at'])
+        self.assertTrue(t.issubset(b))
 
     def test_created_at(self):
         ''' test the created_at attribute '''
@@ -41,4 +40,6 @@ class Test_BaseModel(unittest.TestCase):
         # is created_at of type datetime?
         self.assertIsInstance(bm.created_at, datetime)
         # is it in isoformate
-        self.assertEqual(bm.created_at, datetime.fromisoformat(bm.to_dict()['created_at']), msg='created_at is not in isoformat in to_dict()')
+        self.assertEqual(bm.created_at,
+                         datetime.fromisoformat(bm.to_dict()['created_at']),
+                         msg='created_at is not in isoformat in to_dict()')
