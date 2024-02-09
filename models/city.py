@@ -1,17 +1,15 @@
 '''
-    user class
+    City class
 '''
 from models.base_model import BaseModel
 
 
-class User(BaseModel):
+class City(BaseModel):
     '''
-        class user
+        class City
     '''
-    email = ''
-    password = ''
-    first_name = ''
-    last_name = ''
+    state_id = ''
+    name = ''
 
     def __init__(self, *args, **kwargs):
         '''class constructor'''

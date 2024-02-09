@@ -1,19 +1,19 @@
 '''
-    this is the BaseModel test module
+    this is the Review test module
 '''
 
 import unittest
-from models.base_model import BaseModel
+from models.review import Review
 from datetime import datetime
 
 
-class Test_BaseModel(unittest.TestCase):
+class Test_ReviewModel(unittest.TestCase):
     ''' unittesting for the base model class '''
 
     def test_uuid(self):
         ''' test the uuid for the class instance is as expected '''
-        bm1 = BaseModel()
-        bm2 = BaseModel()
+        bm1 = Review()
+        bm2 = Review()
 
         # bm1 has id?
         self.assertIn('id', bm1.__dict__.keys())
@@ -22,10 +22,11 @@ class Test_BaseModel(unittest.TestCase):
         # uuid is unique for each instance ?
         self.assertNotEqual(bm1.id, bm2.id)
 
+
     def test_created_at(self):
         ''' test the created_at attribute '''
 
-        bm = BaseModel()
+        bm = Review()
 
         # is created_at of type datetime?
         self.assertIsInstance(bm.created_at, datetime)

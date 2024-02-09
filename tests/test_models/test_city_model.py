@@ -3,17 +3,17 @@
 '''
 
 import unittest
-from models.base_model import BaseModel
+from models.city import City
 from datetime import datetime
 
 
-class Test_BaseModel(unittest.TestCase):
-    ''' unittesting for the base model class '''
+class Test_CityModel(unittest.TestCase):
+    ''' unittesting for the City model class '''
 
     def test_uuid(self):
         ''' test the uuid for the class instance is as expected '''
-        bm1 = BaseModel()
-        bm2 = BaseModel()
+        bm1 = City()
+        bm2 = City()
 
         # bm1 has id?
         self.assertIn('id', bm1.__dict__.keys())
@@ -22,10 +22,11 @@ class Test_BaseModel(unittest.TestCase):
         # uuid is unique for each instance ?
         self.assertNotEqual(bm1.id, bm2.id)
 
+
     def test_created_at(self):
         ''' test the created_at attribute '''
 
-        bm = BaseModel()
+        bm = City()
 
         # is created_at of type datetime?
         self.assertIsInstance(bm.created_at, datetime)

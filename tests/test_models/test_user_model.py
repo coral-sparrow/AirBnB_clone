@@ -1,19 +1,19 @@
 '''
-    this is the BaseModel test module
+    this is the User test module
 '''
 
 import unittest
-from models.base_model import BaseModel
+from models.user import User
 from datetime import datetime
 
 
-class Test_BaseModel(unittest.TestCase):
-    ''' unittesting for the base model class '''
+class Test_UserModel(unittest.TestCase):
+    ''' unittesting for the User model class '''
 
     def test_uuid(self):
         ''' test the uuid for the class instance is as expected '''
-        bm1 = BaseModel()
-        bm2 = BaseModel()
+        bm1 = User()
+        bm2 = User()
 
         # bm1 has id?
         self.assertIn('id', bm1.__dict__.keys())
@@ -22,10 +22,11 @@ class Test_BaseModel(unittest.TestCase):
         # uuid is unique for each instance ?
         self.assertNotEqual(bm1.id, bm2.id)
 
+
     def test_created_at(self):
         ''' test the created_at attribute '''
 
-        bm = BaseModel()
+        bm = User()
 
         # is created_at of type datetime?
         self.assertIsInstance(bm.created_at, datetime)
