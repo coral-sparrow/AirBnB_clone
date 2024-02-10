@@ -1,1 +1,1 @@
-# The shell navigation project
+# AirBnb clone project
