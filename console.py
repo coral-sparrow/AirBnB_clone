@@ -15,7 +15,7 @@ class HBNBCommand(cmd.Cmd):
         '''exit the cmd loop'''
         return True
 
-    def do_quit(self):
+    def do_quit(self, line):
         '''Quit command to exit the program'''
         return True
 
@@ -24,7 +24,7 @@ class HBNBCommand(cmd.Cmd):
         '''help the EOF command'''
         print("exit the cmd loop")
 
-    def help_quit(self):
+    def help_quit(self, line):
         '''help the quit command'''
         print('Quit command to exit the program\n')
 
