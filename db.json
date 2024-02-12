@@ -130,5 +130,29 @@
         "name": "My_First_Model",
         "my_number": 89,
         "__class__": "BaseModel"
+    },
+    "BaseModel.fdd9d8c2-7f86-4af3-915d-3e43ce60595c": {
+        "id": "fdd9d8c2-7f86-4af3-915d-3e43ce60595c",
+        "created_at": "2024-02-12T09:47:08.246168",
+        "updated_at": "2024-02-12T09:47:08.246180",
+        "__class__": "BaseModel"
+    },
+    "BaseModel.815bbdfe-ef28-4060-89f3-bbf2645ee122": {
+        "id": "815bbdfe-ef28-4060-89f3-bbf2645ee122",
+        "created_at": "2024-02-12T09:48:49.951381",
+        "updated_at": "2024-02-12T09:49:37.425944",
+        "__class__": "BaseModel"
+    },
+    "BaseModel.6bb2b36d-26e1-40da-96f4-eed4947cb798": {
+        "id": "6bb2b36d-26e1-40da-96f4-eed4947cb798",
+        "created_at": "2024-02-12T09:50:48.041568",
+        "updated_at": "2024-02-12T09:50:52.899921",
+        "__class__": "BaseModel"
+    },
+    "BaseModel.8e2b51f6-0b11-4a23-a36b-4fc3c98ac965": {
+        "id": "8e2b51f6-0b11-4a23-a36b-4fc3c98ac965",
+        "created_at": "2024-02-12T09:55:06.127027",
+        "updated_at": "2024-02-12T09:55:16.171882",
+        "__class__": "BaseModel"
     }
 }

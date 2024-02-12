@@ -1,6 +1,7 @@
 '''file storage, serialize python class objects to json'''
 
 import json
+import copy
 # from models.base_model import BaseModel
 # from models.user import User
 
@@ -24,7 +25,7 @@ class FileStorage():
         '''serializes __objects to the JSON file (path: __file_path)'''
         dict_repr = {}
         for k,v in self.__objects.items():
-            dict_repr[k] = v.to_dict()
+            dict_repr[k] = copy.deepcopy(v).to_dict()
         with open(self.__file_path, 'w', encoding='utf8') as db:
             json.dump(dict_repr, db, indent=4)
 
