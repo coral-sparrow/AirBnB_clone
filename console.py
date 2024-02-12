@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 '''
     implementing the console class
 '''
@@ -15,16 +16,17 @@ class HBNBCommand(cmd.Cmd):
         '''exit the cmd loop'''
         return True
 
-    def do_quit(self, line):
+    def do_quit(self, arg):
         '''Quit command to exit the program'''
         return True
 
 
     def help_EOF(self):
         '''help the EOF command'''
+        print("")
         print("exit the cmd loop")
 
-    def help_quit(self, line):
+    def help_quit(self):
         '''help the quit command'''
         print('Quit command to exit the program\n')
 
