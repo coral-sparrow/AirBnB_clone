@@ -11,17 +11,25 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
-    def do_EOF(self, line):
+    def do_quit(self, line):
+        '''exit the cmd loop'''
         return True
 
-    def do_quit(self, line):
+    def do_EOF(self, line):
+        '''exit the cmd loop'''
         return True
 
     def help_EOF(self):
+        '''help the EOF command'''
         print("exit the cmd loop")
 
     def help_quit(self):
+        '''help the quit command'''
         print("exit the cmd loop")
+
+    def emptyline(self):
+        '''override the emptyline behaviour'''
+        pass
 
 
 if __name__ == '__main__':
