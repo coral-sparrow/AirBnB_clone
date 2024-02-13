@@ -8,7 +8,7 @@ import cmd
 
 
 class HBNBCommand(cmd.Cmd):
-    """  Simple command processor.  """
+    """Simple command processor.  """
 
     prompt = '(hbnb) '
 
