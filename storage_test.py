@@ -3,11 +3,11 @@ import json
 
 # with open('db.json', 'r') as f:
 #     for line in f:
-#           print(line)
-#           print('*' * 20)
-#           print('')
-#           json_obj = json.loads(line)
-#           print(json_obj)
+#          print(line)
+#          print('*' * 20)
+#          print('')
+#          json_obj = json.loads(line)
+#          print(json_obj)
 
 with open('db.json', 'r', encoding = 'utf8') as f:
     al = json.load(f)
