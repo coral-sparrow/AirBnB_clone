@@ -175,6 +175,29 @@ class HBNBCommand(cmd.Cmd):
               "a given id by adding or updating\n   "
               "     a given attribute key/value pair or dictionary.")
 
+    def default(self, line: str):
+        args = line.split('.')
+        command = args.pop()
+        tmp = command.split('(')
+        args.extend(tmp[1:])
+        args[-1] = args[-1].replace(')', '')
+        command = tmp[0]
+        if hasattr(self, f'do_{command}'):
+            getattr(self, f'do_{command}')(' '.join(args).strip())
+
+    def do_count(self, args):
+        '''count by class name'''
+        count = 0
+        objs = list(storage.all().keys())
+        for i in objs:
+            if i.split('.')[0] == args:
+                count += 1
+        print(count)
+
+    def help_count(self):
+        '''count instances of model in database'''
+        print("Usage: count <class> or <class>.count() ")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
