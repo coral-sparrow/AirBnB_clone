@@ -33,12 +33,11 @@ class HBNBCommand(cmd.Cmd):
 
     def help_EOF(self):
         '''help the EOF command'''
-        print("")
-        print("exit the cmd loop")
+        print("EOF signal to exit the program.")
 
     def help_quit(self):
         '''help the quit command'''
-        print('Quit command to exit the program\n')
+        print("Quit command to exit the program.")
 
     def emptyline(self):
         '''override the emptyline behaviour'''
@@ -71,8 +70,8 @@ class HBNBCommand(cmd.Cmd):
 
     def help_create(self):
         '''create new instance of BaseModel'''
-        print('Creates a new instance of BaseModel,'
-              ' saves it (to the JSON file) and prints the id')
+        print("Usage: create <class>\n        "
+              "Create a new class instance and print its id.")
 
     def do_show(self, args):
         '''show instance of database'''
@@ -92,8 +91,9 @@ class HBNBCommand(cmd.Cmd):
 
     def help_show(self):
         '''show instance of database'''
-        print('Prints the string representation',
-              ' of an instance based on the class name and id')
+        print("Usage: show <class> <id> or <class>.show(<id>)\n        "
+              "Display the string representation of a class instance of"
+              " a given id.")
 
     def do_destroy(self, args):
         '''destroy instance of database'''
@@ -114,7 +114,8 @@ class HBNBCommand(cmd.Cmd):
 
     def help_destroy(self):
         '''destroy instance of database'''
-        print('Deletes an instance based on the class name and id')
+        print("Usage: destroy <class> <id> or <class>.destroy(<id>)\n        "
+              "Delete a class instance of a given id.")
 
     def do_all(self, args):
         '''
@@ -134,8 +135,11 @@ class HBNBCommand(cmd.Cmd):
     def help_all(self):
         '''print all string rep.
         of instances in database'''
-        print('Prints all string representation',
-              ' of all instances based or not on the class name')
+        print("Usage: all or all <class> or <class>.all()\n        "
+              "Display string representations of all"
+              " instances of a given class"
+              ".\n        If no class is specified, displays all instantiated "
+              "objects.")
 
     def do_update(self, args):
         '''update  instances based on the
@@ -162,8 +166,14 @@ class HBNBCommand(cmd.Cmd):
 
     def help_update(self):
         '''update instances in database'''
-        print('update  instances based on',
-              ' the class name and id')
+        print("Usage: update <class> <id> <attribute_name> "
+              "<attribute_value> or"
+              "\n       <class>.update(<id>, "
+              "<attribute_name>, <attribute_value"
+              ">) or\n       <class>.update(<id>, <dictionary>)\n        "
+              "Update a class instance of "
+              "a given id by adding or updating\n   "
+              "     a given attribute key/value pair or dictionary.")
 
 
 if __name__ == '__main__':
