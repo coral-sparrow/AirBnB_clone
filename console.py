@@ -13,7 +13,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def do_EOF(self):
-        '''exit the cmd loop'''
+        '''exit the cmd iteration'''
         return True
 
     def do_quit(self, arg):
