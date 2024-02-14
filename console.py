@@ -145,7 +145,7 @@ class HBNBCommand(cmd.Cmd):
         '''update  instances based on the
         class name and id'''
         args_list = args.split()
-
+        print(args_list)
         if len(args_list) == 0:
             print("** class name missing **")
         elif args_list[0] not in classes.keys():
@@ -181,6 +181,7 @@ class HBNBCommand(cmd.Cmd):
         tmp = command.split('(')
         args.extend(tmp[1:])
         args[-1] = args[-1].replace(')', '')
+        args[-1] = args[-1].replace(',', '')
         command = tmp[0]
         if hasattr(self, f'do_{command}'):
             getattr(self, f'do_{command}')(' '.join(args).strip())

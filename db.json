@@ -286,5 +286,12 @@
         "updated_at": "2024-02-14T00:03:11.803473",
         "attr_name": "'attr_value'",
         "__class__": "BaseModel"
+    },
+    "BaseModel.ce2f351b-eb9b-416c-9ebd-356a6a4ef762": {
+        "id": "ce2f351b-eb9b-416c-9ebd-356a6a4ef762",
+        "created_at": "2024-02-14T10:38:04.417076",
+        "updated_at": "2024-02-14T10:38:04.417138",
+        "name": "Mahmoud",
+        "__class__": "BaseModel"
     }
 }
