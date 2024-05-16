@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 '''
     basemodel for the Bnb project to inherited from childeren classes.
 '''
@@ -5,7 +6,6 @@
 
 import uuid
 from datetime import datetime
-from . import storage
 
 
 class BaseModel():
@@ -16,24 +16,23 @@ class BaseModel():
 
     def __init__(self, *args, **kwargs):
         ''' class constructor '''
-
-        if len(kwargs) == 0:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-            storage.new(self)
-        else:
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = self.created_at
+        
+        if kwargs:
+            # self.id = kwargs["id"]
+            # self.created_at = datetime.strptime(kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
+            # self.updated_at = datetime.strptime(kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
             for k, v in kwargs.items():
-                if k == '__class__':
-                    continue
-
-                if k in ['created_at', 'updated_at']:
-                    setattr(self, k, datetime.fromisoformat(v))
-                    # self.k = datetime.fromisoformat(v)
-                else:
+                if k in ["created_at", "updated_at"]:
+                    v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
+                if k != "__class__":
                     setattr(self, k, v)
-
-    def __str__(self) -> str:
+        else:
+            pass
+                
+    def __str__(self):
         ''' str representation of the class '''
         return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
 
@@ -41,12 +40,18 @@ class BaseModel():
         ''' save method will be updated later '''
         # self.updated_at = datetime.now().isoformat()
         self.updated_at = datetime.now()
-        storage.save()
 
     def to_dict(self):
         ''' serializee the object to json format '''
-        attributes = self.__dict__
+        attributes = self.__dict__.copy()
         attributes['__class__'] = type(self).__name__
         attributes['created_at'] = self.created_at.isoformat()
         attributes['updated_at'] = self.updated_at.isoformat()
         return attributes
+
+if __name__ == "__main__":
+    json = {'id': 'aae4b2b8-e71d-4e24-a955-2a028b9e80ec', 'created_at': '2024-05-16T18:19:05.443047', 'updated_at': '2024-05-16T18:19:05.443047', '__class__': 'BaseModel'}
+    base = BaseModel()
+    print(base)
+    setattr(base, "age", 40)
+    print(base)

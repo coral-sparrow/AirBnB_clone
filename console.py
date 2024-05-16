@@ -20,6 +20,10 @@ class HBNBCommand(cmd.Cmd):
         '''Quit command to exit the program'''
         return True
 
+    def do_show(self, arg):
+        '''prints the string representation of an instance based on the class name and id'''    
+        return True
+
     def help_EOF(self):
         '''help the EOF command'''
         print("")
