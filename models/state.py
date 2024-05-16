@@ -10,9 +10,3 @@ class State(BaseModel):
     '''
     name = ''
 
-    def __init__(self, *args, **kwargs):
-        '''class constructor'''
-        if len(kwargs) > 0:
-            super().__init__(**kwargs)
-        else:
-            super().__init__()

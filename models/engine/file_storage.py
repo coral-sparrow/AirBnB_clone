@@ -1,16 +1,22 @@
+#!/usr/bin/python3
 '''file storage, serialize python class objects to json'''
 
+
+from models.base_model import BaseModel
+from models.user import User
 import json
-import copy
-# from models.base_model import BaseModel
-# from models.user import User
 
 
 class FileStorage():
     '''file storage, serialize python class objects to json'''
 
-    __file_path = 'db.json'
+    __file_path = 'file.json'
     __objects = {}
+    
+    classes = {
+      "BaseModel": BaseModel,
+      "User": User
+    }
 
     def all(self):
         '''returns the dictionary __objects'''
@@ -18,16 +24,16 @@ class FileStorage():
 
     def new(self, obj):
         '''sets in __objects the obj with key <obj class name>.id'''
-        class_name = type(obj).__name__.split('.')[-1]
-        self.__objects[f'{class_name}.{obj.id}'] = obj
+        key = type(obj).__name__ + "." + obj.id
+        self.__objects[key] = obj
 
     def save(self):
         '''serializes __objects to the JSON file (path: __file_path)'''
-        dict_repr = {}
+        dict_temp = {}
         for k, v in self.__objects.items():
-            dict_repr[k] = copy.deepcopy(v).to_dict()
-        with open(self.__file_path, 'w', encoding='utf8') as db:
-            json.dump(dict_repr, db, indent=4)
+            dict_temp[k] = v.to_dict()
+        with open(self.__file_path, 'w') as db:
+            json.dump(dict_temp, db, indent=4)
 
     def reload(self):
         '''
@@ -36,17 +42,27 @@ class FileStorage():
             otherwise, do nothing. If the file doesnot exist
         '''
         try:
-            from models.base_model import BaseModel
-            from models.user import User
-
-            with open(self.__file_path, 'r', encoding='utf8') as db:
-                dict_repr = json.load(db)
-            for k in dict_repr.keys():
+            with open(self.__file_path, 'r') as db:
+                dict_temp = json.load(db)
+            for k in dict_temp.keys():
                 class_name = k.split('.')[0]
-                if class_name == 'BaseModel':
-                    self.__objects[k] = BaseModel(**dict_repr[k])
-                elif class_name == 'User':
-                    self.__objects[k] = User(**dict_repr[k])
-
+                obj = self.classes[class_name](**dict_temp[k])
+                # if class_name == 'BaseModel':
+                #     self.__objects[k] = BaseModel(**dict_temp[k])
+                # elif class_name == 'User':
+                #     self.__objects[k] = User(**dict_temp[k])
+                self.__objects[k] = obj
         except FileNotFoundError:
             pass
+
+
+if __name__ == "__main__":
+    base = BaseModel()
+    print(base)
+    print(base.to_dict())
+    storage = FileStorage()
+    storage.reload()
+    
+    storage.new(base)
+    storage.save()
+

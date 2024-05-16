@@ -50,8 +50,6 @@ class BaseModel():
         return attributes
 
 if __name__ == "__main__":
-    json = {'id': 'aae4b2b8-e71d-4e24-a955-2a028b9e80ec', 'created_at': '2024-05-16T18:19:05.443047', 'updated_at': '2024-05-16T18:19:05.443047', '__class__': 'BaseModel'}
     base = BaseModel()
     print(base)
-    setattr(base, "age", 40)
-    print(base)
+    print(base.to_dict())
