@@ -42,6 +42,7 @@ class FileStorage():
             otherwise, do nothing. If the file doesnot exist
         '''
         try:
+<<<<<<< HEAD
             with open(self.__file_path, 'r') as db:
                 dict_temp = json.load(db)
             for k in dict_temp.keys():
@@ -52,6 +53,35 @@ class FileStorage():
                 # elif class_name == 'User':
                 #     self.__objects[k] = User(**dict_temp[k])
                 self.__objects[k] = obj
+=======
+            from models.base_model import BaseModel
+            from models.user import User
+            from models.amenity import Amenity
+            from models.place import Place
+            from models.review import Review
+            from models.city import City
+            from models.state import State
+
+            with open(self.__file_path, 'r', encoding='utf8') as db:
+                dict_repr = json.load(db)
+            for k in dict_repr.keys():
+                class_name = k.split('.')[0]
+                if class_name == 'BaseModel':
+                    self.__objects[k] = BaseModel(**dict_repr[k])
+                elif class_name == 'User':
+                    self.__objects[k] = User(**dict_repr[k])
+                elif class_name == 'Amenity':
+                    self.__objects[k] = Amenity(**dict_repr[k])
+                elif class_name == 'Place':
+                    self.__objects[k] = Place(**dict_repr[k])
+                elif class_name == 'Review':
+                    self.__objects[k] = Review(**dict_repr[k])
+                elif class_name == 'City':
+                    self.__objects[k] = City(**dict_repr[k])
+                elif class_name == 'State':
+                    self.__objects[k] = State(**dict_repr[k])
+
+>>>>>>> adeac056af467435b2f9aff9a2288ea6793d0736
         except FileNotFoundError:
             pass
 

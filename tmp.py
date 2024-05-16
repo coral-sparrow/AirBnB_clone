@@ -1,8 +1,22 @@
 #!/usr/bin/python3
+"""Doc
+"""
+from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
-bm = BaseModel()
-bm.save()
-print(type(bm.updated_at))
-d_json = bm.to_dict()
-print(type(d_json['updated_at']))
+
+
+class FileStorage(FileStorage):
+    """Doc
+    """
+
+    def reload(self):
+        """DOC
+        """
+        pass
+
+    
+s = FileStorage()
+
+s.reload()
+print(len(s.all()))
