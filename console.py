@@ -22,7 +22,7 @@ classes = {
     'Amenity': amenity.Amenity,
     'Place': place.Place,
     'Review': review.Review,
-    'State': state.State
+    'State': state.
 }
 
 
