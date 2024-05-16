@@ -22,7 +22,6 @@ class Test_ReviewModel(unittest.TestCase):
         # uuid is unique for each instance ?
         self.assertNotEqual(bm1.id, bm2.id)
 
-
     def test_created_at(self):
         ''' test the created_at attribute '''
 

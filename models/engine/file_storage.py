@@ -24,7 +24,7 @@ class FileStorage():
     def save(self):
         '''serializes __objects to the JSON file (path: __file_path)'''
         dict_repr = {}
-        for k,v in self.__objects.items():
+        for k, v in self.__objects.items():
             dict_repr[k] = copy.deepcopy(v).to_dict()
         with open(self.__file_path, 'w', encoding='utf8') as db:
             json.dump(dict_repr, db, indent=4)
