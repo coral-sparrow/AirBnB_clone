@@ -22,7 +22,7 @@ classes = {
     'Amenity': amenity.Amenity,
     'Place': place.Place,
     'Review': review.Review,
-    'State': state.
+    'State': state.State
 }
 
 
@@ -55,11 +55,10 @@ class HBNBCommand(cmd.Cmd):
         '''Quit command to exit the program'''
         return True
 
-<<<<<<< HEAD
     def do_show(self, arg):
         '''prints the string representation of an instance based on the class name and id'''    
         return True
-=======
+
     def help_EOF(self):
         '''help the EOF command'''
         print("EOF signal to exit the program.")
@@ -67,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
     def help_quit(self):
         '''help the quit command'''
         print("Quit command to exit the program.")
->>>>>>> adeac056af467435b2f9aff9a2288ea6793d0736
+
 
     # def emptyline(self
     #     '''override the emptyline behaviour'''
